@@ -1,4 +1,7 @@
 node_modules
 dist
 .DS_Store
-.impeccable
+.impeccable/*
+!.impeccable/design.json
+!.impeccable/surfaces/
+!.impeccable/surfaces/home.md

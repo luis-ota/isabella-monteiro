@@ -1,0 +1,229 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-16T16:08:04-03:00",
+  "title": "Design System: Isabella Monteiro — Portfólio de Atriz",
+  "extensions": {
+    "colorMeta": {
+      "ink": {
+        "role": "primary",
+        "displayName": "Tinta Gráfica",
+        "canonical": "#171717",
+        "tonalRamp": ["#171717", "#303030", "#4a4a4a", "#666666", "#858585", "#a6a6a6", "#c9c9c9", "#f2f2f2"]
+      },
+      "copy-paper": {
+        "role": "neutral",
+        "displayName": "Papel de Cópia",
+        "canonical": "#fbfbf8",
+        "tonalRamp": ["#24241e", "#44443b", "#666659", "#89897a", "#adad9d", "#cecec1", "#e7e7de", "#fbfbf8"]
+      },
+      "pearl": {
+        "role": "neutral",
+        "displayName": "Pérola",
+        "canonical": "#f0ede4",
+        "tonalRamp": ["#26231c", "#464239", "#686257", "#8b8477", "#aea89b", "#cdc8bd", "#e2ded4", "#f8f5ed"]
+      },
+      "terracotta": {
+        "role": "secondary",
+        "displayName": "Terracota de Arquivo",
+        "canonical": "#974315",
+        "tonalRamp": ["#341303", "#542108", "#74300e", "#974315", "#b9602f", "#d78358", "#e8af91", "#f8e0d2"]
+      },
+      "dolphin-blue": {
+        "role": "secondary",
+        "displayName": "Azul-Golfinho",
+        "canonical": "#788990",
+        "tonalRamp": ["#182023", "#2d393e", "#43535a", "#5d6f76", "#788990", "#98a7ac", "#bdc7ca", "#e8edef"]
+      },
+      "rose-beige": {
+        "role": "tertiary",
+        "displayName": "Bege-Rose",
+        "canonical": "#e3d6c5",
+        "tonalRamp": ["#2d251c", "#4e4235", "#716151", "#95816e", "#b9a48f", "#d3c2ae", "#e3d6c5", "#f8f3ec"]
+      },
+      "light-sage": {
+        "role": "tertiary",
+        "displayName": "Verde-Claro",
+        "canonical": "#8d957e",
+        "tonalRamp": ["#1e221a", "#363c2f", "#505847", "#6d755f", "#8d957e", "#abb2a0", "#cbd0c2", "#edf0e9"]
+      },
+      "ink-line": {
+        "role": "neutral",
+        "displayName": "Linha de Tinta",
+        "canonical": "rgba(23, 23, 23, 0.35)",
+        "tonalRamp": ["rgba(23,23,23,0.9)", "rgba(23,23,23,0.75)", "rgba(23,23,23,0.6)", "rgba(23,23,23,0.45)", "rgba(23,23,23,0.35)", "rgba(23,23,23,0.24)", "rgba(23,23,23,0.14)", "rgba(23,23,23,0.06)"]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Lettering de Pôster",
+        "purpose": "Palavras-manifesto de uma ou duas linhas em escala monumental."
+      },
+      "headline": {
+        "displayName": "Chamada Editorial",
+        "purpose": "Grandes afirmações de seção em Archivo com entrelinha compacta."
+      },
+      "title": {
+        "displayName": "Título de Obra",
+        "purpose": "Nomes dos trabalhos em Archivo itálico e composição curta."
+      },
+      "body": {
+        "displayName": "Texto de Portfólio",
+        "purpose": "Biografia e contexto profissional com leitura contínua."
+      },
+      "label": {
+        "displayName": "Crédito e Navegação",
+        "purpose": "Metadados, ações e navegação em caixa alta."
+      }
+    },
+    "shadows": [
+      {
+        "name": "paper-offset",
+        "value": "12px 16px 0 rgba(23, 23, 23, 0.08)",
+        "purpose": "Deslocamento duro e discreto exclusivo das fotografias sobrepostas do hero."
+      },
+      {
+        "name": "paper-offset-mobile",
+        "value": "7px 9px 0 rgba(23, 23, 23, 0.08)",
+        "purpose": "Versão compacta da sombra de papel abaixo de 768px."
+      }
+    ],
+    "motion": [
+      {
+        "name": "editorial-enter",
+        "value": "720ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Entrada vertical e fade dos elementos do hero."
+      },
+      {
+        "name": "still-swap",
+        "value": "320ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Troca seca entre fotografias nos spreads de trabalhos."
+      },
+      {
+        "name": "interface-fast",
+        "value": "180ms ease",
+        "purpose": "Cor e pressão dos links de contato."
+      },
+      {
+        "name": "menu-reveal",
+        "value": "220ms ease",
+        "purpose": "Opacidade e deslocamento do menu móvel."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "0.01ms",
+        "purpose": "Duração efetivamente instantânea quando o sistema solicita redução de movimento."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "compressed-desktop",
+        "value": "1080px"
+      },
+      {
+        "name": "stacked-mobile",
+        "value": "767px"
+      },
+      {
+        "name": "compact-mobile",
+        "value": "420px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Desktop Navigation Link",
+      "kind": "nav",
+      "description": "Link pequeno e preciso para navegação sobre papel.",
+      "html": "<a class=\"ds-nav-link\" href=\"#trabalhos\">TRABALHOS</a>",
+      "css": ".ds-nav-link { color: #171717; font-family: 'Archivo Variable', Arial, sans-serif; font-size: .75rem; font-weight: 700; letter-spacing: .03em; text-decoration: none; text-transform: uppercase; } .ds-nav-link:hover { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 6px; } .ds-nav-link:focus-visible { outline: 3px solid #974315; outline-offset: 5px; }"
+    },
+    {
+      "name": "Hero Action",
+      "kind": "button",
+      "refersTo": "hero-cta",
+      "description": "Ação textual sem preenchimento, fechada por linha e seta.",
+      "html": "<a class=\"ds-hero-action\" href=\"#trabalhos\">VER TRABALHOS <span aria-hidden=\"true\">↓</span></a>",
+      "css": ".ds-hero-action { display: inline-flex; align-items: center; gap: 9px; padding: 0 0 4px; border-bottom: 2px solid #171717; color: #171717; font-family: 'Archivo Variable', Arial, sans-serif; font-size: .76rem; font-weight: 750; letter-spacing: .04em; text-decoration: none; text-transform: uppercase; } .ds-hero-action:hover { border-bottom-color: #974315; } .ds-hero-action:focus-visible { outline: 3px solid #974315; outline-offset: 5px; }"
+    },
+    {
+      "name": "Work Spread",
+      "kind": "card",
+      "refersTo": "work-card",
+      "description": "Folha cromática de obra com título editorial, ano e créditos.",
+      "html": "<article class=\"ds-work-spread\" tabindex=\"0\"><p class=\"ds-work-kind\">TEATRO</p><h3>A História é uma História</h3><em>2024</em><dl><div><dt>DIREÇÃO</dt><dd>Fernando Rodembuch</dd></div><div><dt>TEXTO</dt><dd>Millôr Fernandes</dd></div></dl></article>",
+      "css": ".ds-work-spread { width: min(100%, 520px); min-height: 520px; display: flex; flex-direction: column; padding: 64px 48px 42px; color: #171717; background: #e3d6c5; font-family: 'Archivo Variable', Arial, sans-serif; border-radius: 0; } .ds-work-spread h3 { max-width: 10ch; margin: 24px 0 0; font-size: clamp(3rem, 8vw, 5rem); font-style: italic; font-weight: 560; letter-spacing: -.04em; line-height: .88; } .ds-work-kind, .ds-work-spread dt { margin: 0; font-size: .7rem; font-weight: 750; letter-spacing: .08em; text-transform: uppercase; } .ds-work-spread em { margin-top: 24px; font-weight: 700; } .ds-work-spread dl { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: auto 0 0; } .ds-work-spread dd { margin: 5px 0 0; font-size: .78rem; line-height: 1.35; } .ds-work-spread:hover { color: #171717; } .ds-work-spread:focus-visible { outline: 3px solid #974315; outline-offset: -8px; }"
+    },
+    {
+      "name": "Contact Link",
+      "kind": "custom",
+      "refersTo": "contact-link",
+      "description": "Faixa de contato profissional com rótulo, dado principal e saída externa.",
+      "html": "<a class=\"ds-contact-link\" href=\"#contato\"><span class=\"ds-contact-icon\" aria-hidden=\"true\">◎</span><span><small>INSTAGRAM</small>@isamontwiro</span><span aria-hidden=\"true\">↗</span></a>",
+      "css": ".ds-contact-link { display: grid; min-height: 120px; grid-template-columns: 42px 1fr auto; align-items: center; gap: 18px; border-top: 1px solid rgba(251,251,248,.45); border-bottom: 1px solid rgba(251,251,248,.45); color: #fbfbf8; background: #171717; font-family: 'Archivo Variable', Arial, sans-serif; text-decoration: none; transition: color 180ms ease, transform 180ms ease; } .ds-contact-link small { display: block; margin-bottom: 5px; color: #788990; font-size: .65rem; font-weight: 720; letter-spacing: .06em; text-transform: uppercase; } .ds-contact-link:hover { color: #e3d6c5; } .ds-contact-link:focus-visible { outline: 3px solid #974315; outline-offset: 5px; } .ds-contact-link:active { transform: translateY(1px); }"
+    },
+    {
+      "name": "Photo Collage",
+      "kind": "custom",
+      "description": "Duas fotografias fotocopiadas sobre uma folha de cor, com rotação e moldura física.",
+      "html": "<div class=\"ds-collage\"><span class=\"ds-color-sheet\"></span><div class=\"ds-photo ds-photo-main\">RETRATO</div><div class=\"ds-photo ds-photo-side\">CENA</div></div>",
+      "css": ".ds-collage { position: relative; width: 420px; max-width: 100%; height: 430px; background: #fbfbf8; overflow: hidden; } .ds-color-sheet { position: absolute; inset: 25% 8% 8% 18%; background: #e3d6c5; transform: rotate(2.5deg); } .ds-photo { position: absolute; display: grid; place-items: center; border: 8px solid #fbfbf8; color: #fbfbf8; background: #171717; font: 700 .7rem/1 'Archivo Variable', Arial, sans-serif; letter-spacing: .08em; box-shadow: 12px 16px 0 rgba(23,23,23,.08); } .ds-photo-main { top: 20px; right: 20px; width: 58%; height: 68%; transform: rotate(-1.5deg); } .ds-photo-side { left: 20px; bottom: 30px; width: 42%; height: 40%; transform: rotate(2.5deg); } .ds-collage:focus-within .ds-photo, .ds-collage:hover .ds-photo { border-color: #f0ede4; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Zine de Casting Fotocopiado",
+    "overview": "O sistema trata o portfólio como um conjunto de folhas impressas montadas à mão: cru, autoral e imediatamente legível. A composição nasce de grandes áreas de preto e branco, tipografia seca, lettering de pincel e fotografias em preto e branco que ocupam mais espaço do que a interface. Os blocos cromáticos funcionam como papéis recortados, não como decoração digital.\n\nA densidade alterna capa, respiro editorial e spreads de trabalhos em tela cheia. O resultado deve comunicar presença de atriz e rigor de casting, sem assumir a aparência de uma landing page corporativa, de um portfólio de designer ou de uma interface baseada em cartões.",
+    "keyCharacteristics": [
+      "Fotografia de Isabella como elemento dominante.",
+      "Lettering áspero em escala de pôster combinado a sans serif condensada visualmente pelo tracking.",
+      "Colagens assimétricas, espaços negativos amplos e alternância de spreads.",
+      "Superfícies planas, cantos retos e cor aplicada em blocos sólidos.",
+      "Créditos profissionais curtos, contrastados e fáceis de examinar."
+    ],
+    "rules": [
+      {
+        "name": "The One Sheet Rule",
+        "body": "Cada seção longa escolhe uma superfície dominante; as cores não viram gradiente nem competem dentro do mesmo spread.",
+        "section": "colors"
+      },
+      {
+        "name": "The Casting Contrast Rule",
+        "body": "Créditos, navegação e contato sempre mantêm leitura imediata sobre o bloco cromático em que aparecem.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Voices Rule",
+        "body": "Road Rage fala apenas em palavras-manifesto; toda informação factual permanece em Archivo.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tight Poster Rule",
+        "body": "Títulos grandes usam entrelinha compacta e tracking negativo em Archivo, sem sacrificar créditos ou corpo de texto.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat-by-Default Rule",
+        "body": "Nenhuma superfície de conteúdo recebe sombra, blur ou vidro; profundidade vem da montagem das folhas e fotografias.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Square Cut Rule",
+        "body": "Não introduza pílulas, raios arredondados ou avatares circulares; a silhueta deve continuar parecendo papel cortado.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "Do deixe fotografias reais dominarem a área visual e mantenha textos sobre superfícies sólidas.",
+      "Do use Road Rage em palavras curtas e monumentais, preservando Archivo para toda informação factual.",
+      "Do alterne spreads e blocos cromáticos para sustentar o ritmo de zine.",
+      "Do preserve contraste WCAG AA, foco visível e estados equivalentes para hover e teclado.",
+      "Do teste cada composição até 320px e respeite `prefers-reduced-motion`."
+    ],
+    "donts": [
+      "Don't introduza cartões arredondados, gradientes, glassmorphism ou sombras difusas de produto digital.",
+      "Don't transforme a paleta em decoração multicolorida; use uma folha dominante por seção ou obra.",
+      "Don't aplique Road Rage a biografias, créditos, números ou navegação desktop.",
+      "Don't acrescente textura de ruído quando tipografia, fotografia e montagem já criam materialidade.",
+      "Don't deixe colagens decorativas cobrirem texto ou gerar overflow em telas pequenas."
+    ]
+  }
+}
