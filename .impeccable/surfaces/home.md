@@ -8,11 +8,11 @@
 
 ## World
 
-Um zine de casting fotocopiado e montado à mão. A base vem diretamente das referências Pinterest terminadas em 39 e 31: branco, preto, tipografia seca, lettering de pincel, retratos em preto e branco e colagem com grande espaço negativo. A referência 68 fornece blocos sólidos de terracota, azul-golfinho, bege-rose, pérola e verde-claro, nunca uma estética de landing page bege.
+Um zine de casting fotocopiado e montado à mão. A base vem diretamente das referências Pinterest terminadas em 39 e 31: branco, preto, tipografia seca, lettering de pincel e colagem com grande espaço negativo. As fotografias permanecem em cor. A referência 68 fornece blocos sólidos de terracota, azul-golfinho, bege-rose, pérola e verde-claro, nunca uma estética de landing page bege.
 
 ## First viewport
 
-O topo deve parecer a capa de um portfólio impresso: navegação fina e espaçada, nome em itálico seco à esquerda, a palavra PORTFOLIO atravessando a composição em lettering preto áspero, biografia curta e ano. À direita, um conjunto de retratos em preto e branco sobre um recorte bege-rose, com uma foto principal retangular e outra menor sobreposta. Nenhum cartão, botão preenchido ou hero corporativo.
+O topo deve parecer a capa de um portfólio impresso: navegação fina e espaçada, papel profissional e nome em itálico seco à esquerda, a palavra PORTFOLIO atravessando a composição em lettering preto áspero, biografia curta e ano. À direita, um conjunto de retratos coloridos sobre um recorte bege-rose, com uma foto principal retangular e outra menor sobreposta. Nenhum cartão, botão preenchido ou hero corporativo.
 
 ## Visitor path
 

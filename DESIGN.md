@@ -73,7 +73,7 @@ components:
 
 **Creative North Star: "Zine de Casting Fotocopiado"**
 
-O sistema trata o portfólio como um conjunto de folhas impressas montadas à mão: cru, autoral e imediatamente legível. A composição nasce de grandes áreas de preto e branco, tipografia seca, lettering de pincel e fotografias em preto e branco que ocupam mais espaço do que a interface. Os blocos cromáticos funcionam como papéis recortados, não como decoração digital.
+O sistema trata o portfólio como um conjunto de folhas impressas montadas à mão: cru, autoral e imediatamente legível. A composição nasce de grandes áreas de preto e branco, tipografia seca, lettering de pincel e fotografias coloridas que ocupam mais espaço do que a interface. Os blocos cromáticos funcionam como papéis recortados, não como decoração digital.
 
 A densidade alterna capa, respiro editorial e spreads de trabalhos em tela cheia. O resultado deve comunicar presença de atriz e rigor de casting, sem assumir a aparência de uma landing page corporativa, de um portfólio de designer ou de uma interface baseada em cartões.
 
@@ -180,7 +180,7 @@ Todas as superfícies, links e recortes usam cantos retos. Linhas de 1px organiz
 ### Work Spreads
 
 - **Corner Style:** completamente quadrado.
-- **Background:** um papel cromático sólido por obra, alternando com a fotografia em preto e branco.
+- **Background:** um papel cromático sólido por obra, alternando com a fotografia em cor.
 - **Internal Padding:** fluido entre 50px e 110px no desktop; 70px/42px vertical no mobile.
 - **State:** hover ou foco substitui o still principal pelo secundário em 320ms, com leve escala e sem mover o layout.
 
@@ -192,7 +192,7 @@ Todas as superfícies, links e recortes usam cantos retos. Linhas de 1px organiz
 
 ### Photo Collage
 
-- **Treatment:** imagens com contraste elevado e grayscale, recortadas sobre papéis sólidos.
+- **Treatment:** imagens em cor com saturação natural e contraste moderado, recortadas sobre papéis sólidos.
 - **Depth:** sobreposição, rotação e borda de Papel de Cópia; sombra apenas no hero.
 - **Responsive:** bordas, sombras e alturas diminuem sem remover a leitura de colagem.
 

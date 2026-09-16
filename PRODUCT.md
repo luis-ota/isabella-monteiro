@@ -39,7 +39,7 @@ O visitante chega por indicação, Instagram ou link direto, examina retratos e 
 - Nome profissional: Isabella Monteiro.
 - Instagram: @isamontwiro.
 - Fotografias reais de Isabella e dos espetáculos são o material principal.
-- As referências Pinterest terminadas em `39` e `31` definem a linguagem gráfica: preto e branco, tipografia seca, lettering de pincel, composição de pôster e colagem fotográfica.
+- As referências Pinterest terminadas em `39` e `31` definem a linguagem gráfica: base preto e branco, tipografia seca, lettering de pincel e composição de pôster; as fotografias permanecem em cor.
 - A referência terminada em `68` fornece a paleta de apoio: terracota `#974315`, azul-golfinho `#788990`, bege-rose `#e3d6c5`, pérola `#f0ede4` e verde-claro `#8d957e`.
 
 ## Evidence on Hand

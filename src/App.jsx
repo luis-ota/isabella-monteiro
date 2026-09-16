@@ -55,9 +55,9 @@ const works = [
     tone: 'sage',
   },
   {
-    title: 'Delírio',
+    title: 'Filme Delírio',
     year: '2025',
-    medium: 'Audiovisual',
+    medium: 'Audiovisual · longa-metragem',
     direction: 'Gabriel Eneas',
     script: 'Gabriel Eneas, Artur Bitencourt e Rafael Avila',
     images: ['/images/delirio-1.webp', '/images/delirio-2.webp'],
@@ -195,6 +195,7 @@ function Hero() {
     <section className="hero" id="inicio">
       <div className="hero-copy">
         <Motion.h1 {...rise(0.05)}>
+          <span className="hero-role">Atriz</span>
           <span>Isabella</span>
           <span>Monteiro</span>
         </Motion.h1>
@@ -337,7 +338,7 @@ function Contact() {
   return (
     <section className="contact" id="contato">
       <div className="contact-title">
-        <p>Para testes, teatro, cinema e audiovisual.</p>
+        <p>Para PUBLICIDADES, teatro e audiovisual.</p>
         <h2>CONTATO</h2>
       </div>
       <div className="contact-links">
