@@ -16,7 +16,7 @@ const works = [
     medium: 'Teatro',
     direction: 'Vitor Mendes',
     script: 'Grupo Asas de Papel Produções',
-    venue: 'Teatro Municipal Paschoal Carlos Magno',
+    location: 'Teatro Municipal Paschoal Carlos Magno',
     images: ['/images/divina-tragicomedia-1.webp', '/images/divina-tragicomedia-2.webp'],
     alt: 'Isabella Monteiro em cena em A Divina Tragicomédia de Dionísio',
     tone: 'rose',
@@ -27,7 +27,7 @@ const works = [
     medium: 'Teatro',
     direction: 'Fernando Rodembuch',
     script: 'Millôr Fernandes',
-    venue: 'Teatro Municipal Paschoal Carlos Magno',
+    location: 'Teatro Municipal Paschoal Carlos Magno',
     images: ['/images/historia-1.webp', '/images/historia-2.webp'],
     alt: 'Elenco de A História é uma História no palco',
     tone: 'blue',
@@ -38,7 +38,7 @@ const works = [
     medium: 'Teatro',
     direction: 'João Mauro Cruz',
     script: 'Criação do grupo',
-    venue: 'Teatro Barracão Encena',
+    location: 'Teatro Barracão Encena',
     images: ['/images/teicoscopia-1.webp', '/images/teicoscopia-2.webp'],
     alt: 'Isabella Monteiro em cena em Teicoscopia ou Vaudeville do Horror',
     tone: 'terracotta',
@@ -49,7 +49,7 @@ const works = [
     medium: 'Teatro',
     direction: 'Felipe Renã',
     script: 'Adaptação de Gianfrancesco Guarnieri',
-    venue: 'Teatro Barracão Encena',
+    location: 'Teatro Barracão Encena',
     images: ['/images/black-tie-1.webp', '/images/black-tie-2.webp'],
     alt: 'Elenco de Elas não Usam Black-Tie em cena',
     tone: 'sage',
@@ -60,7 +60,6 @@ const works = [
     medium: 'Audiovisual',
     direction: 'Gabriel Eneas',
     script: 'Gabriel Eneas, Artur Bitencourt e Rafael Avila',
-    venue: 'Curta-metragem',
     images: ['/images/delirio-1.webp', '/images/delirio-2.webp'],
     alt: 'Isabella Monteiro em cena no filme Delírio',
     tone: 'ink',
@@ -71,7 +70,6 @@ const works = [
     medium: 'Audiovisual',
     direction: 'Juscelino Zilio',
     script: 'Criação do grupo',
-    venue: 'Curta-metragem',
     images: ['/images/ecos-1.webp', '/images/ecos-2.webp'],
     alt: 'Isabella Monteiro em cena no filme Ecos',
     tone: 'pearl',
@@ -274,7 +272,7 @@ function WorkCard({ work, index }) {
         <dl>
           <div><dt>Direção</dt><dd>{work.direction}</dd></div>
           <div><dt>Texto</dt><dd>{work.script}</dd></div>
-          <div><dt>Produção</dt><dd>{work.venue}</dd></div>
+          {work.location && <div><dt>Local</dt><dd>{work.location}</dd></div>}
         </dl>
       </div>
       <div className="work-media">
