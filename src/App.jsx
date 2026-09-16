@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from 'react'
 import {
-  ArrowDownRight,
+  ArrowDown,
   ArrowUpRight,
   InstagramLogo,
   List,
   WhatsappLogo,
   X,
 } from '@phosphor-icons/react'
-import { motion as Motion, useReducedMotion, useScroll, useTransform } from 'motion/react'
+import { motion as Motion, useReducedMotion } from 'motion/react'
 
 const works = [
   {
@@ -19,7 +19,7 @@ const works = [
     venue: 'Teatro Municipal Paschoal Carlos Magno',
     images: ['/images/divina-tragicomedia-1.webp', '/images/divina-tragicomedia-2.webp'],
     alt: 'Isabella Monteiro em cena em A Divina Tragicomédia de Dionísio',
-    layout: 'tall',
+    tone: 'rose',
   },
   {
     title: 'A História é uma História',
@@ -30,7 +30,7 @@ const works = [
     venue: 'Teatro Municipal Paschoal Carlos Magno',
     images: ['/images/historia-1.webp', '/images/historia-2.webp'],
     alt: 'Elenco de A História é uma História no palco',
-    layout: 'wide',
+    tone: 'blue',
   },
   {
     title: 'Teicoscopia ou Vaudeville do Horror',
@@ -41,7 +41,7 @@ const works = [
     venue: 'Teatro Barracão Encena',
     images: ['/images/teicoscopia-1.webp', '/images/teicoscopia-2.webp'],
     alt: 'Isabella Monteiro em cena em Teicoscopia ou Vaudeville do Horror',
-    layout: 'standard',
+    tone: 'terracotta',
   },
   {
     title: 'Elas não Usam Black-Tie',
@@ -52,7 +52,7 @@ const works = [
     venue: 'Teatro Barracão Encena',
     images: ['/images/black-tie-1.webp', '/images/black-tie-2.webp'],
     alt: 'Elenco de Elas não Usam Black-Tie em cena',
-    layout: 'wide',
+    tone: 'sage',
   },
   {
     title: 'Delírio',
@@ -63,7 +63,7 @@ const works = [
     venue: 'Curta-metragem',
     images: ['/images/delirio-1.webp', '/images/delirio-2.webp'],
     alt: 'Isabella Monteiro em cena no filme Delírio',
-    layout: 'standard',
+    tone: 'ink',
   },
   {
     title: 'Ecos',
@@ -74,7 +74,7 @@ const works = [
     venue: 'Curta-metragem',
     images: ['/images/ecos-1.webp', '/images/ecos-2.webp'],
     alt: 'Isabella Monteiro em cena no filme Ecos',
-    layout: 'tall',
+    tone: 'pearl',
   },
 ]
 
@@ -90,8 +90,7 @@ const backstage = [
 function BrandMark() {
   return (
     <a className="brand-mark" href="#inicio" aria-label="Isabella Monteiro, início">
-      <span>Isabella</span>
-      <strong>Monteiro</strong>
+      Isabella<br />Monteiro
     </a>
   )
 }
@@ -131,7 +130,6 @@ function Header() {
       }
 
       if (event.key !== 'Tab') return
-
       const focusable = [
         menuButtonRef.current,
         ...Array.from(navRef.current?.querySelectorAll('a') ?? []),
@@ -149,7 +147,6 @@ function Header() {
     }
 
     document.addEventListener('keydown', handleKeyDown)
-
     return () => {
       window.clearTimeout(focusFirstLink)
       document.removeEventListener('keydown', handleKeyDown)
@@ -179,91 +176,66 @@ function Header() {
         className={open ? 'site-nav is-open' : 'site-nav'}
         aria-label="Navegação principal"
       >
-        <a href="#sobre" onClick={close}>Sobre</a>
         <a href="#trabalhos" onClick={close}>Trabalhos</a>
-        <a href="#trajetoria" onClick={close}>Trajetória</a>
+        <a href="#inicio" onClick={close}>Início</a>
+        <a href="#sobre" onClick={close}>Sobre</a>
         <a href="#contato" onClick={close}>Contato</a>
       </nav>
     </header>
   )
 }
 
-function HeroCollage() {
+function Hero() {
   const reduceMotion = useReducedMotion()
-  const { scrollYProgress } = useScroll()
-  const yPortrait = useTransform(scrollYProgress, [0, 0.22], [0, reduceMotion ? 0 : 42])
-  const yStage = useTransform(scrollYProgress, [0, 0.22], [0, reduceMotion ? 0 : -34])
-  const rotateStage = useTransform(scrollYProgress, [0, 0.22], [-4, reduceMotion ? -4 : -1])
-
-  const reveal = (delay) => ({
-    initial: reduceMotion ? false : { opacity: 1, y: 24, rotate: delay ? -7 : 2 },
-    animate: { opacity: 1, y: 0, rotate: delay ? -4 : 0 },
-    transition: { duration: 0.8, delay, ease: [0.16, 1, 0.3, 1] },
+  const rise = (delay = 0) => ({
+    initial: reduceMotion ? false : { opacity: 0, y: 26 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.72, delay, ease: [0.16, 1, 0.3, 1] },
   })
 
   return (
-    <div className="hero-collage" aria-label="Retratos e cenas de Isabella Monteiro">
-      <Motion.figure className="hero-photo hero-photo-main" style={{ y: yPortrait }} {...reveal(0.1)}>
-        <img
-          src="/images/isabella-retrato-principal.webp"
-          alt="Retrato de Isabella Monteiro usando jaqueta preta"
-          fetchPriority="high"
-        />
-      </Motion.figure>
-      <Motion.figure className="hero-photo hero-photo-stage" style={{ y: yStage, rotate: rotateStage }} {...reveal(0.28)}>
-        <img
-          src="/images/black-tie-1.webp"
-          alt="Isabella Monteiro no palco em Elas não Usam Black-Tie"
-        />
-      </Motion.figure>
-      <Motion.figure className="hero-photo hero-photo-film" {...reveal(0.42)}>
-        <img src="/images/ecos-1.webp" alt="Isabella Monteiro em cena no filme Ecos" />
-      </Motion.figure>
-      <span className="tape tape-one" aria-hidden="true" />
-      <span className="tape tape-two" aria-hidden="true" />
-    </div>
-  )
-}
-
-function Hero() {
-  const reduceMotion = useReducedMotion()
-
-  return (
     <section className="hero" id="inicio">
-      <Motion.div
-        className="hero-copy"
-        initial={reduceMotion ? false : { opacity: 1, y: 16 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
-      >
-        <h1>
+      <div className="hero-copy">
+        <Motion.h1 {...rise(0.05)}>
           <span>Isabella</span>
-          <strong>Monteiro</strong>
-        </h1>
-        <p className="hero-intro">Atriz de teatro e audiovisual. Presença de palco, escuta e histórias construídas entre Curitiba e o Rio Grande do Sul.</p>
-        <div className="hero-actions">
-          <a className="button button-primary" href="#trabalhos">
-            Ver trabalhos <ArrowDownRight size={20} weight="bold" />
-          </a>
-          <a className="text-link" href="https://instagram.com/isamontwiro" target="_blank" rel="noreferrer">
-            @isamontwiro <ArrowUpRight size={18} weight="bold" />
-          </a>
-        </div>
+          <span>Monteiro</span>
+        </Motion.h1>
+        <Motion.p className="hero-brush" {...rise(0.13)}>
+          <span aria-hidden="true">*</span>PORTFOLIO<span aria-hidden="true">*</span>
+        </Motion.p>
+        <Motion.div className="hero-details" {...rise(0.22)}>
+          <p className="hero-year">2026</p>
+          <p>Atriz de teatro e audiovisual em Curitiba. Presença de palco, escuta e trabalho construído entre o Paraná e o Rio Grande do Sul.</p>
+          <a href="#trabalhos">Ver trabalhos <ArrowDown size={18} weight="bold" /></a>
+        </Motion.div>
+      </div>
+
+      <Motion.div className="hero-collage" {...rise(0.18)} aria-label="Retratos e cena de Isabella Monteiro">
+        <span className="hero-color-sheet" aria-hidden="true" />
+        <figure className="hero-portrait-main">
+          <img src="/images/isabella-retrato-principal.webp" alt="Retrato de Isabella Monteiro usando jaqueta preta" fetchPriority="high" />
+        </figure>
+        <figure className="hero-portrait-side">
+          <img src="/images/isabella-retrato-perfil.webp" alt="Retrato de perfil de Isabella Monteiro" />
+        </figure>
+        <figure className="hero-scene">
+          <img src="/images/black-tie-1.webp" alt="Isabella Monteiro no palco em Elas não Usam Black-Tie" />
+        </figure>
       </Motion.div>
-      <HeroCollage />
     </section>
   )
 }
 
 function About() {
   return (
-    <section className="about section-shell" id="sobre">
-      <div className="about-portrait">
-        <img src="/images/isabella-retrato-perfil.webp" alt="Retrato de perfil de Isabella Monteiro" loading="eager" />
-        <span className="about-year" aria-hidden="true">2026</span>
+    <section className="about" id="sobre">
+      <div className="about-image">
+        <span className="about-block" aria-hidden="true" />
+        <img src="/images/isabella-retrato-frente.webp" alt="Retrato de Isabella Monteiro" loading="eager" />
+        <strong aria-hidden="true">ATRIZ</strong>
       </div>
       <div className="about-copy">
-        <h2>Uma trajetória entre palco e câmera.</h2>
+        <h2>Palco.<br />Câmera.<br /><em>Presença.</em></h2>
         <p>
           Atriz curitibana, Isabella iniciou sua carreira no Rio Grande do Sul em 2022, no teatro Paranóia Produções. Em 2023, integrou a companhia Asas de Papel, ampliando sua atuação para festivais, novas montagens e conteúdos audiovisuais.
         </p>
@@ -281,45 +253,51 @@ function About() {
   )
 }
 
-function WorkCard({ work }) {
+function WorkCard({ work, index }) {
+  const reduceMotion = useReducedMotion()
+
   return (
     <Motion.article
-      className={`work-card work-card-${work.layout}`}
-      initial="rest"
+      className={`work-card tone-${work.tone}`}
+      initial={reduceMotion ? false : { opacity: 0.96, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.18 }}
       whileHover="hover"
       whileFocus="hover"
       tabIndex="0"
       aria-label={`${work.title}, ${work.year}`}
     >
+      <div className="work-copy">
+        <p className="work-kind">{work.medium}</p>
+        <h3>{work.title}</h3>
+        <p className="work-year">{work.year}</p>
+        <dl>
+          <div><dt>Direção</dt><dd>{work.direction}</dd></div>
+          <div><dt>Texto</dt><dd>{work.script}</dd></div>
+          <div><dt>Produção</dt><dd>{work.venue}</dd></div>
+        </dl>
+      </div>
       <div className="work-media">
         <Motion.img
           className="work-image work-image-primary"
           src={work.images[0]}
           alt={work.alt}
-          loading="eager"
+          loading={index < 2 ? 'eager' : 'lazy'}
           variants={{ rest: { opacity: 1, scale: 1 }, hover: { opacity: 0, scale: 1.015 } }}
-          transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+          initial="rest"
+          transition={{ duration: 0.32, ease: [0.16, 1, 0.3, 1] }}
         />
         <Motion.img
           className="work-image work-image-secondary"
           src={work.images[1]}
           alt=""
-          loading="eager"
+          loading={index < 2 ? 'eager' : 'lazy'}
           aria-hidden="true"
           variants={{ rest: { opacity: 0, scale: 1.02 }, hover: { opacity: 1, scale: 1 } }}
-          transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+          initial="rest"
+          transition={{ duration: 0.32, ease: [0.16, 1, 0.3, 1] }}
         />
-      </div>
-      <div className="work-caption">
-        <div className="work-title-row">
-          <h3>{work.title}</h3>
-          <span>{work.year}</span>
-        </div>
-        <p>{work.medium} / Direção de {work.direction}</p>
-        <dl>
-          <div><dt>Texto</dt><dd>{work.script}</dd></div>
-          <div><dt>Produção</dt><dd>{work.venue}</dd></div>
-        </dl>
+        <span className="work-mark" aria-hidden="true">*</span>
       </div>
     </Motion.article>
   )
@@ -327,13 +305,13 @@ function WorkCard({ work }) {
 
 function Work() {
   return (
-    <section className="work section-shell" id="trabalhos">
-      <div className="section-heading">
-        <h2>Trabalhos selecionados</h2>
-        <p>Passe o cursor ou use o foco do teclado para ver outro momento de cada obra.</p>
+    <section className="work" id="trabalhos">
+      <div className="work-heading">
+        <h2>TRABALHOS</h2>
+        <p>Teatro e audiovisual. Passe o cursor ou use o foco para trocar o momento de cada obra.</p>
       </div>
-      <div className="work-grid">
-          {works.map((work) => <WorkCard key={work.title} work={work} />)}
+      <div className="work-list">
+        {works.map((work, index) => <WorkCard key={work.title} work={work} index={index} />)}
       </div>
     </section>
   )
@@ -342,40 +320,38 @@ function Work() {
 function Trajectory() {
   return (
     <section className="trajectory" id="trajetoria">
-      <div className="trajectory-inner section-shell">
-        <div className="trajectory-intro">
-          <h2>O trabalho também acontece fora de cena.</h2>
-          <p>Experiências em produção, técnica e bastidores que aprofundam o olhar de Isabella sobre cada montagem.</p>
-        </div>
-        <div className="backstage-collage" aria-label="Bastidores de produções audiovisuais">
-          <img src="/images/bastidores-aquela-cancao.webp" alt="Isabella Monteiro trabalhando em uma produção audiovisual" loading="eager" />
-          <img src="/images/bastidores-quem-me-dera.webp" alt="Registro de bastidores feito por Isabella Monteiro" loading="eager" />
-        </div>
-        <ul className="backstage-list">
-          {backstage.map((item) => <li key={item}>{item}</li>)}
-        </ul>
+      <div className="trajectory-heading">
+        <h2>FORA<br />DE CENA</h2>
+        <p>Produção, técnica e bastidores também formam o olhar de Isabella sobre cada trabalho.</p>
       </div>
+      <div className="backstage-collage" aria-label="Bastidores de produções audiovisuais">
+        <img src="/images/bastidores-aquela-cancao.webp" alt="Isabella Monteiro trabalhando em uma produção audiovisual" loading="lazy" />
+        <img src="/images/bastidores-quem-me-dera.webp" alt="Registro de bastidores feito por Isabella Monteiro" loading="lazy" />
+      </div>
+      <ul className="backstage-list">
+        {backstage.map((item) => <li key={item}>{item}</li>)}
+      </ul>
     </section>
   )
 }
 
 function Contact() {
   return (
-    <section className="contact section-shell" id="contato">
-      <div className="contact-heading">
-        <h2>Vamos conversar?</h2>
-        <p>Para testes, projetos de teatro, cinema e audiovisual.</p>
+    <section className="contact" id="contato">
+      <div className="contact-title">
+        <p>Para testes, teatro, cinema e audiovisual.</p>
+        <h2>CONTATO</h2>
       </div>
       <div className="contact-links">
         <a href="https://wa.me/5541995027607" target="_blank" rel="noreferrer">
-          <WhatsappLogo size={32} weight="regular" />
+          <WhatsappLogo size={30} weight="regular" />
           <span><small>WhatsApp</small>41 99502-7607</span>
-          <ArrowUpRight size={24} weight="bold" />
+          <ArrowUpRight size={22} weight="bold" />
         </a>
         <a href="https://instagram.com/isamontwiro" target="_blank" rel="noreferrer">
-          <InstagramLogo size={32} weight="regular" />
+          <InstagramLogo size={30} weight="regular" />
           <span><small>Instagram</small>@isamontwiro</span>
-          <ArrowUpRight size={24} weight="bold" />
+          <ArrowUpRight size={22} weight="bold" />
         </a>
       </div>
     </section>

@@ -5,10 +5,9 @@ Portfólio de Isabella Monteiro para teatro e audiovisual. O site reúne trajet�
 ## Stack
 
 - React 19 + Vite
-- Motion para a composição fotográfica e transições de estado
+- Motion para entradas e trocas fotográficas
 - Phosphor Icons
-- Archivo Variable + Caveat Brush, ambas servidas localmente
-- Nginx em container sem privilégios para produção
+- Archivo Variable + Road Rage, ambas servidas localmente
 
 ## Desenvolvimento
 
@@ -30,23 +29,12 @@ O conteúdo factual vem do briefing da atriz. As fotografias foram extraídas do
 
 ## Deploy
 
-Cada push na branch `main` executa lint e build e publica a imagem em:
+Cada push na branch `main` executa lint e build e publica automaticamente no GitHub Pages.
+
+Domínio de produção:
 
 ```text
-ghcr.io/luis-ota/isabella-monteiro:latest
+https://isamonteiro.com.br
 ```
 
-No Acer, `docker-compose.server.yml` publica o Nginx apenas em `127.0.0.1:3101`. O túnel Cloudflare existente encaminha `isabella.wired.rs` para essa porta. O Watchtower já instalado no servidor acompanha o label do container e aplica novas imagens automaticamente.
-
-Deploy ou atualização manual no servidor:
-
-```bash
-docker compose pull
-docker compose up -d
-```
-
-Rollback por commit:
-
-1. Troque `latest` no compose por uma tag SHA publicada pelo workflow.
-2. Rode `docker compose up -d app`.
-
+O arquivo `public/CNAME` mantém o domínio customizado associado ao projeto. Os registros DNS do domínio raiz e de `www` são gerenciados na Cloudflare.
