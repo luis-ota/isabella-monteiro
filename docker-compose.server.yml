@@ -1,0 +1,28 @@
+name: isabella-monteiro
+
+services:
+  app:
+    image: ghcr.io/luis-ota/isabella-monteiro:latest
+    restart: always
+    init: true
+    read_only: true
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    tmpfs:
+      - /tmp
+      - /var/cache/nginx
+      - /var/run
+    labels:
+      com.centurylinklabs.watchtower.enable: "true"
+      autoheal: "true"
+    ports:
+      - "127.0.0.1:3101:8080"
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q -O /dev/null http://127.0.0.1:8080/ || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
