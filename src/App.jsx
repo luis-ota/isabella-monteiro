@@ -119,9 +119,9 @@ function Header() {
     main?.setAttribute('inert', '')
     footer?.setAttribute('inert', '')
 
-    const focusFirstLink = window.requestAnimationFrame(() => {
+    const focusFirstLink = window.setTimeout(() => {
       navRef.current?.querySelector('a')?.focus()
-    })
+    }, 80)
 
     const handleKeyDown = (event) => {
       if (event.key === 'Escape') {
@@ -151,7 +151,7 @@ function Header() {
     document.addEventListener('keydown', handleKeyDown)
 
     return () => {
-      window.cancelAnimationFrame(focusFirstLink)
+      window.clearTimeout(focusFirstLink)
       document.removeEventListener('keydown', handleKeyDown)
       document.body.style.overflow = previousOverflow
       main?.removeAttribute('inert')
