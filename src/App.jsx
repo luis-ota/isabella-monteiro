@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import {
   ArrowDownRight,
   ArrowUpRight,
@@ -98,12 +98,72 @@ function BrandMark() {
 
 function Header() {
   const [open, setOpen] = useState(false)
+  const menuButtonRef = useRef(null)
+  const navRef = useRef(null)
+  const wasOpenRef = useRef(false)
   const close = () => setOpen(false)
+
+  useEffect(() => {
+    const main = document.querySelector('main')
+    const footer = document.querySelector('footer')
+
+    if (!open) {
+      if (wasOpenRef.current) menuButtonRef.current?.focus()
+      wasOpenRef.current = false
+      return undefined
+    }
+
+    wasOpenRef.current = true
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    main?.setAttribute('inert', '')
+    footer?.setAttribute('inert', '')
+
+    const focusFirstLink = window.requestAnimationFrame(() => {
+      navRef.current?.querySelector('a')?.focus()
+    })
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        event.preventDefault()
+        close()
+        return
+      }
+
+      if (event.key !== 'Tab') return
+
+      const focusable = [
+        menuButtonRef.current,
+        ...Array.from(navRef.current?.querySelectorAll('a') ?? []),
+      ].filter(Boolean)
+      const first = focusable[0]
+      const last = focusable.at(-1)
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault()
+        last?.focus()
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault()
+        first?.focus()
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyDown)
+
+    return () => {
+      window.cancelAnimationFrame(focusFirstLink)
+      document.removeEventListener('keydown', handleKeyDown)
+      document.body.style.overflow = previousOverflow
+      main?.removeAttribute('inert')
+      footer?.removeAttribute('inert')
+    }
+  }, [open])
 
   return (
     <header className="site-header">
       <BrandMark />
       <button
+        ref={menuButtonRef}
         className="menu-button"
         type="button"
         aria-expanded={open}
@@ -113,7 +173,12 @@ function Header() {
       >
         {open ? <X size={25} weight="bold" /> : <List size={25} weight="bold" />}
       </button>
-      <nav id="primary-navigation" className={open ? 'site-nav is-open' : 'site-nav'} aria-label="Navegação principal">
+      <nav
+        ref={navRef}
+        id="primary-navigation"
+        className={open ? 'site-nav is-open' : 'site-nav'}
+        aria-label="Navegação principal"
+      >
         <a href="#sobre" onClick={close}>Sobre</a>
         <a href="#trabalhos" onClick={close}>Trabalhos</a>
         <a href="#trajetoria" onClick={close}>Trajetória</a>
@@ -171,12 +236,11 @@ function Hero() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
       >
-        <p className="role">Atriz de teatro e audiovisual</p>
         <h1>
           <span>Isabella</span>
           <strong>Monteiro</strong>
         </h1>
-        <p className="hero-intro">Presença de palco, escuta e histórias construídas entre Curitiba e o Rio Grande do Sul.</p>
+        <p className="hero-intro">Atriz de teatro e audiovisual. Presença de palco, escuta e histórias construídas entre Curitiba e o Rio Grande do Sul.</p>
         <div className="hero-actions">
           <a className="button button-primary" href="#trabalhos">
             Ver trabalhos <ArrowDownRight size={20} weight="bold" />
@@ -287,9 +351,9 @@ function Trajectory() {
           <img src="/images/bastidores-aquela-cancao.webp" alt="Isabella Monteiro trabalhando em uma produção audiovisual" loading="eager" />
           <img src="/images/bastidores-quem-me-dera.webp" alt="Registro de bastidores feito por Isabella Monteiro" loading="eager" />
         </div>
-        <ol className="backstage-list">
+        <ul className="backstage-list">
           {backstage.map((item) => <li key={item}>{item}</li>)}
-        </ol>
+        </ul>
       </div>
     </section>
   )
