@@ -1060,26 +1060,26 @@ img {
   }
 
   .work-nav {
-    bottom: 12px;
-    left: 12px;
-    gap: 6px;
+    bottom: 9px;
+    left: 9px;
+    gap: 4px;
   }
 
   .work-counter {
-    min-width: 52px;
-    height: 34px;
-    font-size: 0.78rem;
-    letter-spacing: 0.06em;
+    min-width: 38px;
+    height: 24px;
+    font-size: 0.62rem;
+    letter-spacing: 0.03em;
   }
 
   .work-nav button {
-    width: 34px;
-    height: 34px;
+    width: 24px;
+    height: 24px;
   }
 
   .work-nav button svg {
-    width: 15px;
-    height: 15px;
+    width: 10px;
+    height: 10px;
   }
 
   .trajectory {
