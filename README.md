@@ -25,7 +25,7 @@ npm run build
 
 ## PDF para download
 
-O botão "Portfólio em PDF" (cabeçalho, menu mobile e contato) baixa `public/portfolio-isabella-monteiro.pdf`, gerado a partir da própria página com os estilos de impressão A4 de `src/styles.css`.
+O link "Baixar em PDF" no fim da página (seção de contato) baixa `public/portfolio-isabella-monteiro.pdf`, gerado a partir da própria página com os estilos de impressão A4 de `src/styles.css`.
 
 Para regerar depois de mudar conteúdo ou imagens:
 

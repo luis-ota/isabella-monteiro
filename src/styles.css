@@ -137,28 +137,7 @@ img {
   text-underline-offset: 6px;
 }
 
-.header-download {
-  display: inline-flex;
-  grid-column: 3;
-  justify-self: end;
-  align-items: center;
-  gap: 7px;
-  font-size: 0.82rem;
-  font-variation-settings: 'wght' 700;
-  letter-spacing: 0.03em;
-  text-decoration: none;
-  text-transform: uppercase;
-}
 
-.header-download:hover {
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 6px;
-}
-
-.nav-download {
-  display: none;
-}
 
 .menu-button {
   display: none;
@@ -614,7 +593,7 @@ img {
 }
 
 .work-card.is-cinematic .work-image {
-  object-fit: contain;
+  object-fit: cover;
 }
 
 .work-nav {
@@ -919,23 +898,6 @@ img {
     line-height: 0.84;
   }
 
-  .header-download {
-    display: none;
-  }
-
-  .site-nav .nav-download {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 26px;
-    padding-bottom: 4px;
-    border-bottom: 2px solid currentColor;
-    font-family: 'Archivo Variable', Arial, sans-serif;
-    font-size: 0.95rem;
-    font-variation-settings: 'wght' 700;
-    letter-spacing: 0.03em;
-    line-height: 1.2;
-  }
 
   .hero {
     display: flex;
@@ -1097,6 +1059,29 @@ img {
     align-self: stretch;
   }
 
+  .work-nav {
+    bottom: 12px;
+    left: 12px;
+    gap: 6px;
+  }
+
+  .work-counter {
+    min-width: 52px;
+    height: 34px;
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+  }
+
+  .work-nav button {
+    width: 34px;
+    height: 34px;
+  }
+
+  .work-nav button svg {
+    width: 15px;
+    height: 15px;
+  }
+
   .trajectory {
     display: flex;
     min-height: 0;
@@ -1198,8 +1183,12 @@ img {
     margin: 0;
   }
 
+  :root {
+    --print-zoom: 0.75;
+  }
+
   html {
-    zoom: 0.75;
+    zoom: var(--print-zoom);
     overflow: visible;
     scroll-behavior: auto;
   }
@@ -1214,8 +1203,6 @@ img {
   .menu-button,
   .work-nav,
   .work-mark,
-  .header-download,
-  .nav-download,
   .contact-download {
     display: none !important;
   }
@@ -1248,6 +1235,7 @@ img {
   .work-card,
   .work-card:nth-child(even) {
     display: grid;
+    height: calc(100vh / var(--print-zoom) * 0.99);
     grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
     min-height: 0;
     padding: 0;
@@ -1273,19 +1261,24 @@ img {
 
   .work-carousel {
     position: static;
+    height: 100%;
     overflow: visible;
     cursor: auto;
     touch-action: auto;
   }
 
   .work-track {
-    display: block;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
     transform: none !important;
     transition: none !important;
   }
 
   .work-slide {
-    height: 360px;
+    height: auto;
+    min-height: 0;
+    flex: 1 1 0;
     border-top: 14px solid var(--tone, var(--ink));
   }
 
@@ -1309,6 +1302,10 @@ img {
   .trajectory {
     min-height: 0;
     padding-block: 110px;
+  }
+
+  .contact {
+    min-height: calc(100vh / var(--print-zoom) - 170px);
   }
 
   .backstage-collage {

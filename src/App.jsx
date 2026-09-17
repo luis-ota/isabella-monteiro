@@ -189,15 +189,7 @@ function Header() {
         <a href="#inicio" onClick={close}>Início</a>
         <a href="#sobre" onClick={close}>Sobre</a>
         <a href="#contato" onClick={close}>Contato</a>
-        <a className="nav-download" href="/portfolio-isabella-monteiro.pdf" download onClick={close}>
-          <DownloadSimple size={20} weight="bold" />
-          Baixar portfólio em PDF
-        </a>
       </nav>
-      <a className="header-download" href="/portfolio-isabella-monteiro.pdf" download>
-        <DownloadSimple size={17} weight="bold" />
-        Portfólio em PDF
-      </a>
     </header>
   )
 }
@@ -423,7 +415,7 @@ function Contact() {
   return (
     <section className="contact" id="contato">
       <div className="contact-title">
-        <p>Para PUBLICIDADES, teatro e audiovisual.</p>
+        <p>Para publicidades, teatro e audiovisual.</p>
         <h2>CONTATO</h2>
       </div>
       <div className="contact-links">
