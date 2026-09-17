@@ -23,6 +23,18 @@ npm run lint
 npm run build
 ```
 
+## PDF para download
+
+O botão "Portfólio em PDF" (cabeçalho, menu mobile e contato) baixa `public/portfolio-isabella-monteiro.pdf`, gerado a partir da própria página com os estilos de impressão A4 de `src/styles.css`.
+
+Para regerar depois de mudar conteúdo ou imagens:
+
+```bash
+npm run pdf
+```
+
+O script usa Chrome/Chromium (defina `CHROME_BIN` se necessário) e, quando disponível, otimiza o arquivo com Ghostscript.
+
 ## Conteúdo e imagens
 
 O conteúdo factual vem do briefing da atriz. As fotografias foram extraídas do portfólio anterior fornecido pela cliente e convertidas para WebP. A procedência está documentada em `public/images/SOURCES.md`.

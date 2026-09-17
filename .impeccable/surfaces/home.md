@@ -24,7 +24,7 @@ O topo deve parecer a capa de um portfólio impresso: navegação fina e espaça
 
 ## Signature interaction
 
-Cada trabalho funciona como uma folha impressa: ao hover ou foco, o segundo still atravessa o primeiro em uma troca seca, como substituir uma fotografia sobre a mesa. A navegação usa sublinhado desenhado e o lettering do hero entra como uma única pincelada horizontal.
+Cada trabalho funciona como uma folha impressa com um carrossel manual: arraste a foto para o lado, clique nela ou use as setas quadradas com contador `01/02` para trocar o still, como virar fotografias sobre a mesa. A troca desliza em 420ms e o contador dá um tick a cada virada. A navegação usa sublinhado desenhado e o lettering do hero entra como uma única pincelada horizontal.
 
 ## Responsive behavior
 

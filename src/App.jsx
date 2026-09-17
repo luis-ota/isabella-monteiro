@@ -2,6 +2,10 @@ import { useEffect, useRef, useState } from 'react'
 import {
   ArrowDown,
   ArrowUpRight,
+  CaretLeft,
+  CaretRight,
+  DownloadSimple,
+  FilePdf,
   InstagramLogo,
   List,
   WhatsappLogo,
@@ -42,6 +46,7 @@ const works = [
     images: ['/images/teicoscopia-1.webp', '/images/teicoscopia-2.webp'],
     alt: 'Isabella Monteiro em cena em Teicoscopia ou Vaudeville do Horror',
     tone: 'terracotta',
+    focus: '50% 22%',
   },
   {
     title: 'Elas não Usam Black-Tie',
@@ -55,6 +60,7 @@ const works = [
     tone: 'sage',
   },
   {
+    id: 'filme-delirio',
     title: 'Filme Delírio',
     year: '2025',
     medium: 'Audiovisual · longa-metragem',
@@ -63,8 +69,11 @@ const works = [
     images: ['/images/delirio-1.webp', '/images/delirio-2.webp'],
     alt: 'Isabella Monteiro em cena no filme Delírio',
     tone: 'ink',
+    fit: 'cinematic',
+    ratio: '728 / 391',
   },
   {
+    id: 'ecos',
     title: 'Ecos',
     year: '2025',
     medium: 'Audiovisual',
@@ -73,6 +82,8 @@ const works = [
     images: ['/images/ecos-1.webp', '/images/ecos-2.webp'],
     alt: 'Isabella Monteiro em cena no filme Ecos',
     tone: 'pearl',
+    fit: 'cinematic',
+    ratio: '835 / 380',
   },
 ]
 
@@ -178,7 +189,15 @@ function Header() {
         <a href="#inicio" onClick={close}>Início</a>
         <a href="#sobre" onClick={close}>Sobre</a>
         <a href="#contato" onClick={close}>Contato</a>
+        <a className="nav-download" href="/portfolio-isabella-monteiro.pdf" download onClick={close}>
+          <DownloadSimple size={20} weight="bold" />
+          Baixar portfólio em PDF
+        </a>
       </nav>
+      <a className="header-download" href="/portfolio-isabella-monteiro.pdf" download>
+        <DownloadSimple size={17} weight="bold" />
+        Portfólio em PDF
+      </a>
     </header>
   )
 }
@@ -254,16 +273,64 @@ function About() {
 
 function WorkCard({ work, index }) {
   const reduceMotion = useReducedMotion()
+  const [photo, setPhoto] = useState(0)
+  const [offset, setOffset] = useState(0)
+  const [dragging, setDragging] = useState(false)
+  const drag = useRef({ active: false, startX: 0 })
+  const count = work.images.length
+
+  const show = (next) => setPhoto((next + count) % count)
+
+  const resist = (value) => {
+    const atStart = photo === 0 && value > 0
+    const atEnd = photo === count - 1 && value < 0
+    return atStart || atEnd ? value * 0.35 : value
+  }
+
+  const startDrag = (event) => {
+    if (event.pointerType === 'mouse' && event.button !== 0) return
+    drag.current = { active: true, startX: event.clientX }
+    setDragging(true)
+    event.currentTarget.setPointerCapture(event.pointerId)
+  }
+
+  const moveDrag = (event) => {
+    if (!drag.current.active) return
+    setOffset(resist(event.clientX - drag.current.startX))
+  }
+
+  const endDrag = (event) => {
+    if (!drag.current.active) return
+    const cancelled = event.type === 'pointercancel'
+    const distance = cancelled ? 0 : event.clientX - drag.current.startX
+    drag.current.active = false
+    setDragging(false)
+    setOffset(0)
+
+    if (cancelled) return
+    if (distance <= -48) show(photo + 1)
+    else if (distance >= 48) show(photo - 1)
+    else if (Math.abs(distance) < 8) show(photo + 1)
+  }
+
+  const handleKeys = (event) => {
+    if (event.key === 'ArrowRight') {
+      event.preventDefault()
+      show(photo + 1)
+    } else if (event.key === 'ArrowLeft') {
+      event.preventDefault()
+      show(photo - 1)
+    }
+  }
 
   return (
     <Motion.article
-      className={`work-card tone-${work.tone}`}
+      className={`work-card tone-${work.tone}${work.fit ? ` is-${work.fit}` : ''}`}
+      id={work.id}
+      style={{ ...(work.ratio && { '--still-ratio': work.ratio }), ...(work.focus && { '--focus': work.focus }) }}
       initial={reduceMotion ? false : { opacity: 0.96, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.18 }}
-      whileHover="hover"
-      whileFocus="hover"
-      tabIndex="0"
       aria-label={`${work.title}, ${work.year}`}
     >
       <div className="work-copy">
@@ -276,26 +343,44 @@ function WorkCard({ work, index }) {
           {work.location && <div><dt>Local</dt><dd>{work.location}</dd></div>}
         </dl>
       </div>
-      <div className="work-media">
-        <Motion.img
-          className="work-image work-image-primary"
-          src={work.images[0]}
-          alt={work.alt}
-          loading={index < 2 ? 'eager' : 'lazy'}
-          variants={{ rest: { opacity: 1, scale: 1 }, hover: { opacity: 0, scale: 1.015 } }}
-          initial="rest"
-          transition={{ duration: 0.32, ease: [0.16, 1, 0.3, 1] }}
-        />
-        <Motion.img
-          className="work-image work-image-secondary"
-          src={work.images[1]}
-          alt=""
-          loading={index < 2 ? 'eager' : 'lazy'}
-          aria-hidden="true"
-          variants={{ rest: { opacity: 0, scale: 1.02 }, hover: { opacity: 1, scale: 1 } }}
-          initial="rest"
-          transition={{ duration: 0.32, ease: [0.16, 1, 0.3, 1] }}
-        />
+      <div className="work-media" onKeyDown={handleKeys}>
+        <div
+          className={dragging ? 'work-carousel is-grabbing' : 'work-carousel'}
+          role="group"
+          aria-label={`Fotos de ${work.title}`}
+          onPointerDown={startDrag}
+          onPointerMove={moveDrag}
+          onPointerUp={endDrag}
+          onPointerCancel={endDrag}
+        >
+          <div
+            className={dragging ? 'work-track is-dragging' : 'work-track'}
+            style={{ transform: `translateX(calc(${-photo * 100}% + ${offset}px))` }}
+          >
+            {work.images.map((source, slide) => (
+              <div className="work-slide" key={source} aria-hidden={slide !== photo}>
+                <img
+                  className="work-image"
+                  src={source}
+                  alt={slide === 0 ? work.alt : `${work.alt}, segundo momento`}
+                  loading={slide === 0 && index > 1 ? 'lazy' : 'eager'}
+                  draggable="false"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="work-nav">
+          <span className="work-counter" aria-live="polite">
+            <span key={photo}>{`0${photo + 1}/0${count}`}</span>
+          </span>
+          <button type="button" onClick={() => show(photo - 1)} aria-label={`Foto anterior de ${work.title}`}>
+            <CaretLeft size={20} weight="bold" />
+          </button>
+          <button type="button" onClick={() => show(photo + 1)} aria-label={`Próxima foto de ${work.title}`}>
+            <CaretRight size={20} weight="bold" />
+          </button>
+        </div>
         <span className="work-mark" aria-hidden="true">*</span>
       </div>
     </Motion.article>
@@ -307,7 +392,7 @@ function Work() {
     <section className="work" id="trabalhos">
       <div className="work-heading">
         <h2>TRABALHOS</h2>
-        <p>Teatro e audiovisual. Passe o cursor ou use o foco para trocar o momento de cada obra.</p>
+        <p>Teatro e audiovisual. Arraste, clique ou use as setas para ver outros momentos de cada obra.</p>
       </div>
       <div className="work-list">
         {works.map((work, index) => <WorkCard key={work.title} work={work} index={index} />)}
@@ -351,6 +436,11 @@ function Contact() {
           <InstagramLogo size={30} weight="regular" />
           <span><small>Instagram</small>@isamontwiro</span>
           <ArrowUpRight size={22} weight="bold" />
+        </a>
+        <a className="contact-download" href="/portfolio-isabella-monteiro.pdf" download>
+          <FilePdf size={30} weight="regular" />
+          <span><small>Portfólio</small>Baixar em PDF</span>
+          <DownloadSimple size={22} weight="bold" />
         </a>
       </div>
     </section>

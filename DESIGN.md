@@ -31,13 +31,13 @@ typography:
     letterSpacing: "-0.04em"
   body:
     fontFamily: "Archivo Variable, Arial, sans-serif"
-    fontSize: "0.96rem"
+    fontSize: "1rem"
     fontWeight: 400
     lineHeight: 1.55
     letterSpacing: "normal"
   label:
     fontFamily: "Archivo Variable, Arial, sans-serif"
-    fontSize: "0.72rem"
+    fontSize: "0.9rem"
     fontWeight: 750
     lineHeight: 1.35
     letterSpacing: "0.08em"
@@ -127,8 +127,8 @@ A paleta combina tinta e papel de cópia com cinco papéis coloridos dessaturado
 - **Display** (400, escala fluida de pôster, line-height 0.62): palavras-manifesto como PORTFOLIO, TRABALHOS e CONTATO.
 - **Headline** (peso variável 610, escala fluida, line-height 0.78): grandes chamadas editoriais e identidade de seção.
 - **Title** (itálico, peso variável 560, escala fluida, line-height 0.88): títulos das obras, limitados a cerca de 10 caracteres por linha visual.
-- **Body** (400, 0.96rem, line-height 1.55): biografia em colunas de no máximo 61ch; textos auxiliares podem reduzir para 0.78–0.91rem.
-- **Label** (peso variável 750, 0.72rem, tracking 0.08em, caixa alta): mídia, metadados, ações e navegação.
+- **Body** (400, 1rem, line-height 1.55): biografia em colunas de no máximo 61ch; textos auxiliares podem reduzir para 0.95–1rem.
+- **Label** (peso variável 750, 0.9rem, tracking 0.08em, caixa alta): mídia, metadados, ações e navegação. Rótulos nunca descem abaixo de 0.84rem.
 
 ### Named Rules
 
@@ -143,6 +143,10 @@ O desktop usa divisões assimétricas de duas colunas: hero em 58/42, sobre em 4
 Em até 1080px, as proporções são comprimidas sem perder a dupla coluna. Abaixo de 768px, todos os spreads se tornam páginas empilhadas, o menu ocupa a viewport inteira e o gutter passa a 18px. Em até 420px, colagens e mídias têm alturas menores. O sistema suporta largura mínima de 320px sem overflow horizontal; elementos decorativos nunca invadem texto.
 
 O espaçamento privilegia poucos intervalos grandes: seções usam blocos verticais entre 70px e 150px, enquanto texto corrido mantém 16px entre parágrafos. O hero e as mídias usam unidades dinâmicas de viewport para preservar impacto em telas móveis.
+
+## Print
+
+O sistema tem uma camada A4 paisagem usada para gerar `public/portfolio-isabella-monteiro.pdf` com `npm run pdf`. A impressão reproduz a página como ela é: mesmos blocos cromáticos e cards em duas colunas com `print-color-adjust: exact`, mas cada obra vira uma tira com os dois stills empilhados, separados pela cor do papel do card (Papel de Cópia nas obras escuras). Cada seção começa em uma página nova, os cards nunca quebram no meio e o layout mobile é ignorado na impressão (`@media screen`) para o PDF sair no formato de desktop. Setas, contador e o próprio botão de PDF desaparecem.
 
 ## Elevation & Depth
 
@@ -182,7 +186,8 @@ Todas as superfícies, links e recortes usam cantos retos. Linhas de 1px organiz
 - **Corner Style:** completamente quadrado.
 - **Background:** um papel cromático sólido por obra, alternando com a fotografia em cor.
 - **Internal Padding:** fluido entre 50px e 110px no desktop; 70px/42px vertical no mobile.
-- **State:** hover ou foco substitui o still principal pelo secundário em 320ms, com leve escala e sem mover o layout.
+- **Carousel:** cada obra tem um carrossel manual com trilho deslizante e avanço circular. Arraste com mouse ou toque (com resistência de 0.35 nas pontas), clique ou toque na foto para avançar, ou use as setas quadradas. O contador tabular `01/02` e as setas ficam em Papel de Cópia no canto inferior esquerdo; o contador dá um tick vertical a cada troca. Teclado: setas esquerda/direita com o foco nas setas. A troca anima em 420ms com a mesma curva editorial do sistema.
+- **Cinematic Still:** obras de audiovisual preservam a proporção original do still (cerca de 2:1) em uma faixa centralizada na coluna, com fundo transparente; nunca cropar o enquadramento nem criar tarjas.
 
 ### Contact Links
 
