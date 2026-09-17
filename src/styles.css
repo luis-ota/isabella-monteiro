@@ -122,7 +122,7 @@ img {
 }
 
 .site-nav a,
-.site-footer > a {
+.site-footer-row > a {
   font-size: 0.88rem;
   font-variation-settings: 'wght' 700;
   letter-spacing: 0.03em;
@@ -131,7 +131,7 @@ img {
 }
 
 .site-nav a:hover,
-.site-footer > a:hover {
+.site-footer-row > a:hover {
   text-decoration: underline;
   text-decoration-thickness: 2px;
   text-underline-offset: 6px;
@@ -806,13 +806,20 @@ img {
 
 .site-footer {
   display: flex;
-  min-height: 130px;
+  min-height: 150px;
+  flex-direction: column;
+  justify-content: center;
+  gap: 22px;
+  padding: 30px var(--gutter) 26px;
+  color: var(--ink);
+  background: var(--rose);
+}
+
+.site-footer-row {
+  display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 30px;
-  padding: 32px var(--gutter);
-  color: var(--ink);
-  background: var(--rose);
 }
 
 .site-footer p {
@@ -820,6 +827,27 @@ img {
   font-size: 0.88rem;
   font-variation-settings: 'wght' 650;
   text-transform: uppercase;
+}
+
+.site-credit {
+  padding-top: 16px;
+  border-top: 1px solid rgba(23, 23, 23, 0.22);
+  font-size: 0.66rem;
+  font-variation-settings: 'wght' 650;
+  letter-spacing: 0.05em;
+  line-height: 1.5;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.site-credit a {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+.site-credit a:hover {
+  text-decoration-thickness: 2px;
 }
 
 @media (max-width: 1080px) {
@@ -1140,10 +1168,14 @@ img {
   }
 
   .site-footer {
-    min-height: 190px;
+    min-height: 0;
+    padding-block: 40px 30px;
+  }
+
+  .site-footer-row {
     flex-direction: column;
     align-items: flex-start;
-    justify-content: center;
+    gap: 14px;
   }
 }
 
@@ -1207,7 +1239,8 @@ img {
   .menu-button,
   .work-nav,
   .work-mark,
-  .contact-download {
+  .contact-download,
+  .site-footer-row > a {
     display: none !important;
   }
 

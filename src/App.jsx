@@ -441,11 +441,19 @@ function Contact() {
 }
 
 function Footer() {
+  const year = new Date().getFullYear()
+
   return (
     <footer className="site-footer">
-      <BrandMark />
-      <p>Portfólio de atriz / 2026</p>
-      <a href="#inicio">Voltar ao início</a>
+      <div className="site-footer-row">
+        <BrandMark />
+        <p>Portfólio de atriz / {year}</p>
+        <a href="#inicio">Voltar ao início</a>
+      </div>
+      <div className="site-credit">
+        Desenvolvido por{' '}
+        <a href="https://portfolio.wired.rs/creative" target="_blank" rel="noreferrer">wired layer co.</a>
+      </div>
     </footer>
   )
 }
