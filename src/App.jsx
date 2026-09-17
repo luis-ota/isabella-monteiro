@@ -281,7 +281,7 @@ function WorkCard({ work, index }) {
 
   const startDrag = (event) => {
     if (event.pointerType === 'mouse' && event.button !== 0) return
-    drag.current = { active: true, startX: event.clientX }
+    drag.current = { active: true, startX: event.clientX, startY: event.clientY }
     setDragging(true)
     event.currentTarget.setPointerCapture(event.pointerId)
   }
@@ -294,15 +294,16 @@ function WorkCard({ work, index }) {
   const endDrag = (event) => {
     if (!drag.current.active) return
     const cancelled = event.type === 'pointercancel'
-    const distance = cancelled ? 0 : event.clientX - drag.current.startX
+    const horizontal = cancelled ? 0 : event.clientX - drag.current.startX
+    const vertical = cancelled ? 0 : event.clientY - drag.current.startY
     drag.current.active = false
     setDragging(false)
     setOffset(0)
 
     if (cancelled) return
-    if (distance <= -48) show(photo + 1)
-    else if (distance >= 48) show(photo - 1)
-    else if (Math.abs(distance) < 8) show(photo + 1)
+    if (horizontal <= -48) show(photo + 1)
+    else if (horizontal >= 48) show(photo - 1)
+    else if (Math.hypot(horizontal, vertical) < 8) show(photo + 1)
   }
 
   const handleKeys = (event) => {

@@ -30,8 +30,8 @@ html {
 body {
   margin: 0;
   min-width: 320px;
-  min-height: 100dvh;
-  overflow-x: hidden;
+  min-height: 100vh;
+  min-height: 100svh;
   color: var(--ink);
   background: var(--paper);
 }
@@ -149,7 +149,8 @@ img {
 .hero {
   position: relative;
   display: grid;
-  min-height: 100dvh;
+  min-height: 100vh;
+  min-height: 100svh;
   grid-template-columns: minmax(0, 58fr) minmax(420px, 42fr);
   overflow: hidden;
   padding: calc(var(--header-height) + 78px) var(--gutter) 54px;
@@ -901,7 +902,8 @@ img {
 
   .hero {
     display: flex;
-    min-height: 100dvh;
+    min-height: 100vh;
+    min-height: 100svh;
     flex-direction: column;
     padding: calc(var(--header-height) + 34px) var(--gutter) 30px;
   }
@@ -1052,7 +1054,8 @@ img {
   }
 
   .work-media {
-    min-height: 72dvh;
+    min-height: 72vh;
+    min-height: 72svh;
   }
 
   .work-card.is-cinematic .work-media {
@@ -1158,7 +1161,8 @@ img {
   }
 
   .work-media {
-    min-height: 64dvh;
+    min-height: 64vh;
+    min-height: 64svh;
   }
 }
 
