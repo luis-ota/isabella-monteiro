@@ -245,7 +245,7 @@ function About() {
         <strong aria-hidden="true">ATRIZ</strong>
       </div>
       <div className="about-copy">
-        <h2>Palco.<br />Câmera.<br /><em>Presença.</em></h2>
+        <h2>Sobre mim</h2>
         <p>
           Atriz curitibana, Isabella iniciou sua carreira no Rio Grande do Sul em 2022, no teatro Paranóia Produções. Em 2023, integrou a companhia Asas de Papel, ampliando sua atuação para festivais, novas montagens e conteúdos audiovisuais.
         </p>
