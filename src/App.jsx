@@ -403,6 +403,7 @@ function Trajectory() {
       </div>
       <div className="backstage-collage" aria-label="Bastidores de produções audiovisuais">
         <img src="/images/bastidores-aquela-cancao.webp" alt="Isabella Monteiro trabalhando em uma produção audiovisual" loading="lazy" />
+        <img src="/images/bastidores-fotografia.webp" alt="Isabella Monteiro fotografando em evento teatral" loading="lazy" />
         <img src="/images/bastidores-quem-me-dera.webp" alt="Registro de bastidores feito por Isabella Monteiro" loading="lazy" />
       </div>
       <ul className="backstage-list">

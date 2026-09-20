@@ -714,11 +714,21 @@ img {
   left: 0;
 }
 
+.backstage-collage img:nth-child(2) {
+  top: -90px;
+  left: 55%;
+  width: 32%;
+  height: 400px;
+  border: 8px solid var(--paper);
+  object-position: 28% 62%;
+  transform: rotate(-2.5deg);
+}
+
 .backstage-collage img:last-child {
   right: 0;
   bottom: 0;
-  width: 46%;
-  height: 390px;
+  width: 40%;
+  height: 350px;
   border: 8px solid var(--paper);
   transform: rotate(3.5deg);
 }
@@ -1134,9 +1144,11 @@ img {
     height: 420px;
   }
 
-  .backstage-collage img:last-child {
-    width: 49%;
-    height: 310px;
+  .backstage-collage img:nth-child(2) {
+    top: -25px;
+    right: 2%;
+    width: 42%;
+    height: 230px;
     border-width: 5px;
   }
 
