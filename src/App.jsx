@@ -21,7 +21,7 @@ const works = [
     direction: 'Vitor Mendes',
     script: 'Grupo Asas de Papel Produções',
     location: 'Teatro Municipal Paschoal Carlos Magno',
-    images: ['/images/divina-tragicomedia-1.webp', '/images/divina-tragicomedia-2.webp'],
+    images: ['/images/divina-tragicomedia-4.webp', '/images/divina-tragicomedia-1.webp', '/images/divina-tragicomedia-2.webp', '/images/divina-tragicomedia-3.webp'],
     alt: 'Isabella Monteiro em cena em A Divina Tragicomédia de Dionísio',
     tone: 'rose',
   },
@@ -32,7 +32,7 @@ const works = [
     direction: 'Fernando Rodembuch',
     script: 'Millôr Fernandes',
     location: 'Teatro Municipal Paschoal Carlos Magno',
-    images: ['/images/historia-1.webp', '/images/historia-2.webp'],
+    images: ['/images/historia-3.webp', '/images/historia-1.webp', '/images/historia-2.webp', '/images/historia-4.webp', '/images/historia-5.webp', '/images/historia-6.webp'],
     alt: 'Elenco de A História é uma História no palco',
     tone: 'blue',
   },
@@ -43,7 +43,7 @@ const works = [
     direction: 'João Mauro Cruz',
     script: 'Criação do grupo',
     location: 'Teatro Barracão Encena',
-    images: ['/images/teicoscopia-1.webp', '/images/teicoscopia-2.webp'],
+    images: ['/images/teicoscopia-3.webp', '/images/teicoscopia-1.webp', '/images/teicoscopia-2.webp', '/images/teicoscopia-4.webp'],
     alt: 'Isabella Monteiro em cena em Teicoscopia ou Vaudeville do Horror',
     tone: 'terracotta',
     focus: '50% 22%',
@@ -55,7 +55,7 @@ const works = [
     direction: 'Felipe Renã',
     script: 'Adaptação de Gianfrancesco Guarnieri',
     location: 'Teatro Barracão Encena',
-    images: ['/images/black-tie-1.webp', '/images/black-tie-2.webp'],
+    images: ['/images/black-tie-3.webp', '/images/black-tie-1.webp', '/images/black-tie-2.webp', '/images/black-tie-4.webp', '/images/black-tie-5.webp', '/images/black-tie-6.webp'],
     alt: 'Elenco de Elas não Usam Black-Tie em cena',
     tone: 'sage',
   },
@@ -229,7 +229,7 @@ function Hero() {
           <img src="/images/isabella-retrato-perfil.webp" alt="Retrato de perfil de Isabella Monteiro" />
         </figure>
         <figure className="hero-scene">
-          <img src="/images/black-tie-1.webp" alt="Isabella Monteiro no palco em Elas não Usam Black-Tie" />
+          <img src="/images/black-tie-3.webp" alt="Isabella Monteiro no palco em Elas não Usam Black-Tie" />
         </figure>
       </Motion.div>
     </section>
