@@ -2,7 +2,7 @@ name: isabella-monteiro
 
 services:
   app:
-    image: ghcr.io/luis-ota/isabella-monteiro:latest
+    image: ghcr.io/wired-layer-co/isabella-monteiro:latest
     restart: always
     init: true
     read_only: true
