@@ -19,19 +19,53 @@ jobs:
     name: Lint e build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Baixar portfólio de atriz
+        uses: actions/checkout@v4
+
+      - name: Baixar site de comunicação para bandas
+        uses: actions/checkout@v4
+        with:
+          repository: wired-layer-co/isabella-comunicacao-bandas
+          ref: main
+          path: socialmedia-source
+
       - uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
-      - name: Instalar dependências
+          cache-dependency-path: |
+            package-lock.json
+            socialmedia-source/package-lock.json
+
+      - name: Instalar dependências do portfólio
         run: npm ci --no-audit --no-fund
-      - name: Lint
+
+      - name: Validar portfólio
         run: npm run lint
+
+      - name: Instalar dependências do site de comunicação
+        working-directory: socialmedia-source
+        run: npm ci --no-audit --no-fund
+
+      - name: Validar site de comunicação
+        working-directory: socialmedia-source
+        run: npm run lint
+
       - name: Configurar Pages
         uses: actions/configure-pages@v5
-      - name: Build
+
+      - name: Gerar portfólio
         run: npm run build
+
+      - name: Gerar site de comunicação em /socialmedia
+        working-directory: socialmedia-source
+        run: npm run build -- --base=/socialmedia/
+
+      - name: Integrar site de comunicação ao domínio principal
+        run: |
+          mkdir -p dist/socialmedia
+          cp -a socialmedia-source/dist/. dist/socialmedia/
+
       - name: Empacotar site
         uses: actions/upload-pages-artifact@v4
         with:

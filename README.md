@@ -43,10 +43,11 @@ O conteúdo factual vem do briefing da atriz. As fotografias foram extraídas do
 
 Cada push na branch `main` executa lint e build e publica automaticamente no GitHub Pages.
 
-Domínio de produção:
+Domínios de produção:
 
 ```text
 https://isamonteiro.com.br
+https://isamonteiro.com.br/socialmedia/
 ```
 
-O arquivo `public/CNAME` mantém o domínio customizado associado ao projeto. Os registros DNS do domínio raiz e de `www` são gerenciados na Cloudflare.
+O arquivo `public/CNAME` mantém o domínio customizado associado ao projeto. Os registros DNS do domínio raiz e de `www` são gerenciados na Cloudflare. Durante o deploy, o workflow também baixa `wired-layer-co/isabella-comunicacao-bandas`, gera o build com `--base=/socialmedia/` e o incorpora em `dist/socialmedia` sem alterar o portfólio da raiz.
