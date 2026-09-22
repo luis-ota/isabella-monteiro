@@ -79,7 +79,7 @@ const works = [
     medium: 'Audiovisual',
     direction: 'Juscelino Zilio',
     script: 'Criação do grupo',
-    images: ['/images/ecos-1.webp', '/images/ecos-2.webp'],
+    images: ['/images/ecos-1.webp'],
     alt: 'Isabella Monteiro em cena no filme Ecos',
     tone: 'pearl',
     fit: 'cinematic',
@@ -337,15 +337,15 @@ function WorkCard({ work, index }) {
           {work.location && <div><dt>Local</dt><dd>{work.location}</dd></div>}
         </dl>
       </div>
-      <div className="work-media" onKeyDown={handleKeys}>
+      <div className="work-media" onKeyDown={count > 1 ? handleKeys : undefined}>
         <div
           className={dragging ? 'work-carousel is-grabbing' : 'work-carousel'}
           role="group"
           aria-label={`Fotos de ${work.title}`}
-          onPointerDown={startDrag}
-          onPointerMove={moveDrag}
-          onPointerUp={endDrag}
-          onPointerCancel={endDrag}
+          onPointerDown={count > 1 ? startDrag : undefined}
+          onPointerMove={count > 1 ? moveDrag : undefined}
+          onPointerUp={count > 1 ? endDrag : undefined}
+          onPointerCancel={count > 1 ? endDrag : undefined}
         >
           <div
             className={dragging ? 'work-track is-dragging' : 'work-track'}
@@ -364,7 +364,7 @@ function WorkCard({ work, index }) {
             ))}
           </div>
         </div>
-        <div className="work-nav">
+        {count > 1 && <div className="work-nav">
           <span className="work-counter" aria-live="polite">
             <span key={photo}>{`0${photo + 1}/0${count}`}</span>
           </span>
@@ -374,7 +374,7 @@ function WorkCard({ work, index }) {
           <button type="button" onClick={() => show(photo + 1)} aria-label={`Próxima foto de ${work.title}`}>
             <CaretRight size={20} weight="bold" />
           </button>
-        </div>
+        </div>}
         <span className="work-mark" aria-hidden="true">*</span>
       </div>
     </Motion.article>
