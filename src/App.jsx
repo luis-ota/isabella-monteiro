@@ -99,7 +99,8 @@ const backstage = [
 function BrandMark() {
   return (
     <a className="brand-mark" href="#inicio" aria-label="Isabella Monteiro, início">
-      Isabella<br />Monteiro
+      <img className="brand-icon" src="/favicon.png?v=2" alt="" aria-hidden="true" />
+      <span className="brand-name">Isabella<br />Monteiro</span>
     </a>
   )
 }

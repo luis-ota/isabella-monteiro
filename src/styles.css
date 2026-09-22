@@ -107,13 +107,26 @@ img {
 }
 
 .brand-mark {
+  display: inline-flex;
   width: max-content;
+  align-items: center;
+  gap: 10px;
   font-size: 1rem;
   font-style: italic;
   font-variation-settings: 'wght' 620;
   letter-spacing: -0.04em;
-  line-height: 0.82;
   text-decoration: none;
+}
+
+.brand-icon {
+  width: 38px;
+  height: 38px;
+  flex: none;
+  object-fit: contain;
+}
+
+.brand-name {
+  line-height: 0.82;
 }
 
 .site-nav {
@@ -884,6 +897,11 @@ img {
   .site-header {
     display: flex;
     justify-content: space-between;
+  }
+
+  .brand-icon {
+    width: 32px;
+    height: 32px;
   }
 
   .menu-button {
