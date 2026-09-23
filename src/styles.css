@@ -399,7 +399,7 @@ img {
 .about-copy > p {
   width: min(100%, 61ch);
   margin: 0;
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   line-height: 1.6;
 }
 
